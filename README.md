@@ -2,6 +2,7 @@
 
 # Sistema Punto de Venta Zapatería Cachorros🐶
 
+[TOC]
 
 ## Introducción
 
@@ -456,9 +457,11 @@ Propietario:
 | **Escenario soleado: Registro de  empleado exitoso** <br />                         ![img](https://github.com/PrimalAngel/CachorrosApp/blob/master/Resources/icon_Actor.png?raw=true)                   <br />**1**. El propietario captura los campos: id del  trabajador, nombre completo, cargo, dirección, y edad del empleado.   <br />**2**. Visualiza el mensaje de confirmación y da  clic en <aceptar>. | ![img](https://github.com/PrimalAngel/CachorrosApp/blob/master/Resources/icon_Mensaje.png?raw=true)                   <br />**1.** El sistema valida los datos ingresados en los  campos y realiza persistencia en la Base de Datos.   **2**. El sistema envía un mensaje de “¡Registro  en inventario exitoso!”. |
 | **Escenario nublado: Registro de  empleado incompleto** <br />                      ![img](https://github.com/PrimalAngel/CachorrosApp/blob/master/Resources/icon_Actor.png?raw=true) <br /> **1**. El  propietario no captura alguno de los siguientes campos: id del trabajador,  nombre completo, cargo, dirección, y edad del empleado.  <br /> **2**. Visualiza el mensaje y da clic en <aceptar>. | ![img](https://github.com/PrimalAngel/CachorrosApp/blob/master/Resources/icon_Mensaje.png?raw=true)<br /> **1.** El sistema envía un mensaje de alerta o  error. |
 
+![](https://github.com/PrimalAngel/CachorrosApp/blob/master/Resources/Interfaces/CU_12.png?raw=true)
+
 ![](https://github.com/PrimalAngel/CachorrosApp/blob/master/Resources/DiagramasSecuencia/CU_8.jpg?raw=true)
 
-![](https://github.com/PrimalAngel/CachorrosApp/blob/master/Resources/DiagramasRobustez/CU_13.jpg?raw=true)
+![](https://github.com/PrimalAngel/CachorrosApp/blob/master/Resources/DiagramasRobustez/CU_12.png?raw=true)
 
 #### CU-13 Eliminar Empleado
 
@@ -473,7 +476,11 @@ Propietario:
 | **Escenario soleado: Eliminación de empleado  exitoso**<br />![img](https://github.com/PrimalAngel/CachorrosApp/blob/master/Resources/icon_Actor.png?raw=true) <br />**1**. El propietario selecciona con doble clic uno  de los empleados ya registrados. El sistema automáticamente llena los campos:  id del trabajador, nombre completo, cargo, dirección, y edad del empleado.<br />**2.** El propietario da clic en botón eliminar <br />**3.**  Visualiza el mensaje de confirmación y da clic en <aceptar>. | ![img](https://github.com/PrimalAngel/CachorrosApp/blob/master/Resources/icon_Mensaje.png?raw=true)<br />**1.** El sistema valida los datos ingresados en los  campos y realiza persistencia en la Base de Datos.<br />   **2**. El sistema envía un mensaje de “¡Eliminación  en la base de datos correcta!”. |
 | **Escenario nublado: Registro de  empleado incompleto**<br /> ![img](https://github.com/PrimalAngel/CachorrosApp/blob/master/Resources/icon_Actor.png?raw=true)<br />**1**. El  propietario no selecciona ningún empleado de la tabla de empleados y da clic  en el botón eliminar  <br />**2**. Visualiza el mensaje y da clic en  <aceptar>. | ![img](https://github.com/PrimalAngel/CachorrosApp/blob/master/Resources/icon_Mensaje.png?raw=true)<br /> **1.** El sistema envía un mensaje de alerta o  error. |
 
+![](https://github.com/PrimalAngel/CachorrosApp/blob/master/Resources/Interfaces/CU_13.png?raw=true)
+
 ![](https://github.com/PrimalAngel/CachorrosApp/blob/master/Resources/DiagramasSecuencia/CU_13.png?raw=true)
+
+![](https://github.com/PrimalAngel/CachorrosApp/blob/master/Resources/DiagramasRobustez/CU_13.jpg?raw=true)
 
 #### CU-14 Visualizar Lista de Empleados
 
