@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="contentPane" prefHeight="584.0" prefWidth="947.0" stylesheets="@resources.css/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="puntodeventa.controllerPropietario">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu fx:id="btnClose" mnemonicParsing="false" onAction="#close" text="Salir">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#close" text="Salir">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="ESCAPE" control="UP" meta="UP" shift="ANY" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+               </items></Menu>
+        <Menu mnemonicParsing="false" text="Archivo">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#generarArchivo" text="Generar Excel del Inventario">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="F1" control="UP" meta="UP" shift="ANY" shortcut="UP" />
+                     </accelerator></MenuItem>
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+         <children>
+            <TabPane prefHeight="375.0" prefWidth="640.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <tabs>
+                <Tab text="Inventario">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <BorderPane prefHeight="346.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <center>
+                                    <AnchorPane BorderPane.alignment="CENTER">
+                                       <children>
+                                          <TableView fx:id="tlbInv" layoutX="45.0" onMouseClicked="#selectItem" prefHeight="530.0" prefWidth="625.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <columns>
+                                                <TableColumn fx:id="clmnCategoria" prefWidth="75.0" text="Categoria" />
+                                              <TableColumn fx:id="clmnMarca" prefWidth="75.0" text="Marca" />
+                                              <TableColumn fx:id="clmnModelo" prefWidth="75.0" text="Modelo" />
+                                                <TableColumn fx:id="clmnNumero" prefWidth="75.0" text="Numero" />
+                                                <TableColumn fx:id="clmnColor" prefWidth="136.0" text="Color" />
+                                                <TableColumn fx:id="clmnFecha" prefWidth="81.0" text="Fecha" />
+                                                <TableColumn fx:id="clmnPrecio" prefWidth="79.0" text="Precio" />
+                                                <TableColumn fx:id="clmnStatus" prefWidth="75.0" text="Status" />
+                                            </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                 </center>
+                                 <left>
+                                    <AnchorPane prefHeight="530.0" prefWidth="277.0" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <VBox prefHeight="530.0" prefWidth="319.0" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-42.0" AnchorPane.topAnchor="0.0">
+                                             <children>
+                                                <Label text="Inventario" underline="true">
+                                                   <font>
+                                                      <Font name="Comic Sans MS" size="24.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="36.0" right="10.0" top="10.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <TextField fx:id="txtCategoria" promptText="Categoria">
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" right="5.0" top="10.0" />
+                                                   </VBox.margin>
+                                                </TextField>
+                                                <TextField fx:id="txtMarca" promptText="Marca">
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" right="5.0" top="10.0" />
+                                                   </VBox.margin>
+                                                </TextField>
+                                                <TextField fx:id="txtModelo" promptText="Modelo">
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" right="5.0" top="10.0" />
+                                                   </VBox.margin>
+                                                </TextField>
+                                                <TextField fx:id="txtColor" promptText="Color">
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" right="5.0" top="10.0" />
+                                                   </VBox.margin>
+                                                </TextField>
+                                                <TextField fx:id="txtPrecio" promptText="Precio">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                                                   </VBox.margin>
+                                                </TextField>
+                                                <ScrollPane prefHeight="202.0" prefWidth="285.0">
+                                                   <content>
+                                                      <VBox fx:id="vBoxInventario" prefHeight="200.0" prefWidth="359.0">
+                                                         <children>
+                                                            <ToolBar prefHeight="75.0" prefWidth="124.0">
+                                                               <items>
+                                                                  <Button fx:id="btnAgregarCampo" mnemonicParsing="false" onMouseClicked="#agregarElemento" text="Agregar">
+                                                                     <tooltip>
+                                                                        <Tooltip text="Agregar casilla para talla" />
+                                                                     </tooltip>
+                                                                     <graphic>
+                                                                        <ImageView fitHeight="31.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@resources.css/footprints.png" />
+                                                                           </image>
+                                                                        </ImageView>
+                                                                     </graphic>
+                                                                     <font>
+                                                                        <Font name="Comic Sans MS" size="12.0" />
+                                                                     </font>
+                                                                  </Button>
+                                                                  <Button fx:id="btnEliminarCampo" mnemonicParsing="false" text="Eliminar">
+                                                                     <graphic>
+                                                                        <ImageView fitHeight="32.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@resources.css/borrar%20(1).png" />
+                                                                           </image>
+                                                                        </ImageView>
+                                                                     </graphic>
+                                                                     <font>
+                                                                        <Font name="Comic Sans MS" size="12.0" />
+                                                                     </font>
+                                                                  </Button>
+                                                               </items>
+                                                            </ToolBar>
+                                                         </children>
+                                                      </VBox>
+                                                   </content>
+                                                </ScrollPane>
+                                                <ToolBar prefHeight="75.0" prefWidth="332.0">
+                                                   <items>
+                                                      <ToolBar prefHeight="53.0" prefWidth="298.0">
+                                                        <items>
+                                                          <Button fx:id="btnGuardar" mnemonicParsing="false" onMouseClicked="#guardar" prefHeight="30.0" prefWidth="105.0" text="Guardar">
+                                                               <graphic>
+                                                                  <ImageView fitHeight="35.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@resources.css/open-book-top-view.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                               </graphic>
+                                                            </Button>
+                                                            <Button fx:id="btnEliminar" mnemonicParsing="false" onMouseClicked="#eliminarCalzado" prefHeight="36.0" prefWidth="97.0" text="Eliminar">
+                                                               <graphic>
+                                                                  <ImageView fitHeight="34.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@resources.css/borrar.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                               </graphic>
+                                                            </Button>
+                                                            <Button mnemonicParsing="false" onMouseClicked="#cancelar" text="Cancelar" />
+                                                        </items>
+                                                      </ToolBar>
+                                                   </items>
+                                                </ToolBar>
+                                             </children></VBox>
+                                       </children>
+                                    </AnchorPane>
+                                 </left>
+                              </BorderPane>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Empleados">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <BorderPane prefHeight="529.0" prefWidth="823.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <center>
+                                    <AnchorPane BorderPane.alignment="CENTER">
+                                       <children>
+                                          <TableView fx:id="tlbEmpleado" onMouseClicked="#selectItemEmpleado" prefHeight="529.0" prefWidth="823.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <columns>
+                                              <TableColumn fx:id="clmnId" prefWidth="70.0" text="Id" />
+                                              <TableColumn fx:id="clmnNombre" prefWidth="210.0" text="Nombre" />
+                                                <TableColumn fx:id="clmnCargo" prefWidth="85.0" text="Cargo" />
+                                                <TableColumn fx:id="clmnDireccion" prefWidth="248.0" text="Dirección" />
+                                                <TableColumn fx:id="clmnEdad" text="Edad" />
+                                            </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                 </center>
+                                 <left>
+                                    <AnchorPane prefHeight="529.0" prefWidth="253.0" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <VBox prefHeight="529.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <children>
+                                                <AnchorPane>
+                                                   <children>
+                                                      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="37.0" prefWidth="253.0" text="Empleados" underline="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+                                                         <font>
+                                                            <Font name="Comic Sans MS" size="26.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </AnchorPane>
+                                                <AnchorPane />
+                                                <AnchorPane>
+                                                   <children>
+                                                      <VBox fx:id="vBoxAdd" prefHeight="200.0" prefWidth="253.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <children>
+                                                            <TextField fx:id="idEmp" onKeyPressed="#delimitTextField" promptText="Id del trabajador">
+                                                               <font>
+                                                                  <Font name="Comic Sans MS" size="14.0" />
+                                                               </font>
+                                                               <VBox.margin>
+                                                                  <Insets bottom="10.0" left="20.0" right="20.0" />
+                                                               </VBox.margin>
+                                                            </TextField>
+                                                            <TextField fx:id="nombre" promptText="Nombre Completo">
+                                                               <font>
+                                                                  <Font name="Comic Sans MS" size="14.0" />
+                                                               </font>
+                                                               <VBox.margin>
+                                                                  <Insets bottom="10.0" left="20.0" right="20.0" />
+                                                               </VBox.margin>
+                                                            </TextField>
+                                                            <TextField fx:id="cargo" promptText="Cargo">
+                                                               <font>
+                                                                  <Font name="Comic Sans MS" size="14.0" />
+                                                               </font>
+                                                               <VBox.margin>
+                                                                  <Insets bottom="10.0" left="20.0" right="20.0" />
+                                                               </VBox.margin>
+                                                            </TextField>
+                                                            <TextField fx:id="direccion" promptText="Direccion">
+                                                               <font>
+                                                                  <Font name="Comic Sans MS" size="14.0" />
+                                                               </font>
+                                                               <VBox.margin>
+                                                                  <Insets bottom="10.0" left="20.0" right="20.0" />
+                                                               </VBox.margin>
+                                                            </TextField>
+                                                            <TextField fx:id="edad" onKeyPressed="#delimitTextField" promptText="Edad">
+                                                               <font>
+                                                                  <Font name="Comic Sans MS" size="14.0" />
+                                                               </font>
+                                                               <VBox.margin>
+                                                                  <Insets bottom="10.0" left="20.0" right="20.0" />
+                                                               </VBox.margin>
+                                                            </TextField>
+                                                            <ToolBar prefHeight="41.0" prefWidth="255.0">
+                                                              <items>
+                                                                <Button fx:id="agregarEmpleado" mnemonicParsing="false" onMouseClicked="#guardarEmpleado" text="Agregar">
+                                                                     <font>
+                                                                        <Font name="Comic Sans MS" size="14.0" />
+                                                                     </font>
+                                                                  </Button>
+                                                                  <Button fx:id="btnEliminarEmpleado" mnemonicParsing="false" onMouseClicked="#eliminarEmpleado" text="Eliminar">
+                                                                     <font>
+                                                                        <Font name="Comic Sans MS" size="14.0" />
+                                                                     </font>
+                                                                  </Button>
+                                                                  <Button mnemonicParsing="false" onMouseClicked="#cancelar" text="Cancelar">
+                                                                     <font>
+                                                                        <Font name="Comic Sans MS" size="14.0" />
+                                                                     </font>
+                                                                  </Button>
+                                                              </items>
+                                                               <VBox.margin>
+                                                                  <Insets />
+                                                               </VBox.margin>
+                                                            </ToolBar>
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
+                                                </AnchorPane>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                                 </left>
+                              </BorderPane>
+                           </children></AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab text="Ventas">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <BorderPane prefHeight="530.0" prefWidth="947.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <center>
+                                    <AnchorPane BorderPane.alignment="CENTER">
+                                       <children>
+                                          <TableView fx:id="tlbVenta" prefHeight="530.0" prefWidth="947.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <columns>
+                                              <TableColumn fx:id="clmnVenta" prefWidth="314.0" text="ID Venta" />
+                                              <TableColumn fx:id="clmnTrabajador" prefWidth="257.0" text="Trabajador" />
+                                                <TableColumn fx:id="clmnCodigo" prefWidth="195.0" text="Codigo" />
+                                                <TableColumn fx:id="clmnFechaVenta" prefWidth="180.0" text="Fecha" />
+                                            </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                 </center>
+                              </BorderPane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>
