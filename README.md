@@ -67,21 +67,21 @@ Las principales razones del uso de un ciclo de desarrollo iterativo e incrementa
 
 #### Actividades realizadas en la primera iteración
 
-| Integrante del equipo                            | Alexis Julian Velázquez Nava | Angel Emmanuel Hernandez Gonzalez | Alejandro Jesús Pedraza Viveros | Carlos Daniel Rodríguez Ramírez | Luis ángel Gracia Arellano |
+| Integrante del equipo                            | Alexis Julian Velázquez Nava | Angel Emmanuel Hernandez Gonzalez | Alejandro Jesús Pedraza Viveros | Carlos Daniel Rodríguez Ramírez | Luis Angel Garcia Arellano |
 | ------------------------------------------------ | ---------------------------- | --------------------------------- | ------------------------------- | ------------------------------- | -------------------------- |
 | **Caso de Uso<br />(Diagramas y Funcionalidad)** | 2                            | 1                                 | 6                               | 5                               | 4                          |
 | **Fecha de entrega**                             | 25 Marzo-20 Abril            | 25 Marzo-20 Abril                 | 25 Marzo-20 Abril               | 25 Marzo-20 Abril               | 25 Marzo-20 Abril          |
 
 #### Actividades realizadas en la segunda iteración
 
-| Integrante del equipo                       | Alexis Julian Velázquez Nava | Angel Emmanuel Hernandez Gonzalez | Alejandro Jesús Pedraza Viveros | Carlos Daniel Rodríguez Ramírez | Luis ángel Gracia Arellano |
+| Integrante del equipo                       | Alexis Julian Velázquez Nava | Angel Emmanuel Hernandez Gonzalez | Alejandro Jesús Pedraza Viveros | Carlos Daniel Rodríguez Ramírez | Luis Angel Garcia Arellano |
 | ------------------------------------------- | ---------------------------- | --------------------------------- | ------------------------------- | ------------------------------- | -------------------------- |
 | **Caso de Uso (Diagramas y Funcionalidad)** | 12                           | 7                                 | 15                              | 13                              | 8                          |
 | **Fecha de entrega**                        | 26 Abril- 4 Mayo             | 26 Abril- 4 Mayo                  | 26 Abril- 4 Mayo                | 26 Abril- 4 Mayo                | 26 Abril- 4 Mayo           |
 
 #### Actividades realizadas en la tercera iteración
 
-| Integrante del equipo                       | Alexis Julian Velázquez Nava | Angel Emmanuel Hernandez Gonzalez | Alejandro Jesús Pedraza Viveros | Carlos Daniel Rodríguez Ramírez | Luis ángel Gracia Arellano |
+| Integrante del equipo                       | Alexis Julian Velázquez Nava | Angel Emmanuel Hernandez Gonzalez | Alejandro Jesús Pedraza Viveros | Carlos Daniel Rodríguez Ramírez | Luis Angel Garcia Arellano |
 | ------------------------------------------- | ---------------------------- | --------------------------------- | ------------------------------- | ------------------------------- | -------------------------- |
 | **Caso de Uso (Diagramas y Funcionalidad)** | 14 y 13                      | 9 y 3                             | 16 y 3                          | 10 y 3                          | 11 y 3                     |
 | **Fecha de entrega**                        | 8 Junio - 10 junio           | 8 Junio - 10 junio                | 8 Junio - 10 junio              | 8 Junio - 10 junio              | 8 Junio - 10 junio         |
