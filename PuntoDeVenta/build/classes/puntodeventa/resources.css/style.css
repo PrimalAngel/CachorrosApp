@@ -1,0 +1,116 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 11/10/2019, 03:47:11 PM
+    Author     : Angel Emmanuel Hernandez Gonzalez
+*/
+
+Pane{
+    -fx-background-color: #f7f1e3;
+    
+}
+
+.VBoxLogin{
+    -fx-background-color: #f7f1e3;
+}
+
+Alert{
+    -fx-background-color: BLACK;
+}
+
+Accordion{
+    -fx-background-color: #f7f1e3;
+    -fx-border-color: black;
+}
+
+MenuBar{
+    -fx-background-color: #706fd3;
+}
+
+PasswordField{
+    -fx-background-radius: 30;
+    -fx-background-radius: 30;
+    -fx-border-width: 2;
+    -fx-background-color: none;
+    -fx-border-color: black;
+    -fx-border-radius: 30;
+}
+
+VBox{
+    -fx-background-color: #f7f1e3;
+
+}
+
+ToolBar{
+    -fx-background-color: #f7f1e3;
+}
+
+.tabVentas{
+    //-fx-background: url(resources.css/logoPV.png) no-repeat center;
+    -fx-background-size: cover;   
+}
+
+TextField{
+    -fx-background-radius: 30;
+    -fx-border-width: 2;
+    -fx-background-color: none;
+    -fx-border-color: black;
+    -fx-border-radius: 30;
+}
+
+#topVentas{
+    -fx-border-radius: 30;
+}
+
+#containerTabCambio{
+    -fx-background-color: #f7f1e3;
+}
+
+#ContainerVbox{
+    -fx-background-color: #f7f1e3;
+}
+Button{
+    -fx-background-radius: 30;
+    
+}
+
+Button:hover{
+    -fx-background-color: rgba(132, 129, 122,0.5)
+}
+
+TextField:hover{
+    -fx-border-color: rgba(34, 112, 147,1.0);
+    -fx-arc-width: 20;
+}
+
+/*TextField:focused{
+    //-fx-background-color: #33d9b2;
+    -fx-background-color: rgba(34, 112, 147,1.0);
+    -fx-arc-width: 20;
+    -fx-background-radius: 30;
+}*/
+
+TableView{
+   -fx-background-color: transparent;
+}
+
+TableView:focused{
+    -fx-background-color: transparent;
+    
+}
+
+.FechaVentaDP{
+    -fx-background-radius:0px ;
+    -fx-border-color: transparent;
+}
+
+Text{
+    -fx-font-size: 30pt;
+    -fx-font-family: Arial;
+    -fx-font-weight: bold;
+    -fx-fill: black;
+}
+
