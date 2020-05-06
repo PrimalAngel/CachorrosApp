@@ -96,7 +96,7 @@ El sistema deberá aportar cualidades a los objetos cómo:
 
 Calzado:
 
-- El calzado contará con modelo, marca, color, número/talla, precio, fecha de registro del inventario y se identificará con un código numérico de 5 dígitos.
+- El calzado contará con modelo, marca, color, número/talla, precio, fecha de registro del inventario y se identificará con un código numérico de máximo 5 dígitos.
 
  
 
