@@ -2,8 +2,6 @@
 
 # Sistema Punto de Venta Zapatería Cachorros🐶
 
-[TOC]
-
 ## Introducción
 
 ### Descripción del proyecto
