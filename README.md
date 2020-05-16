@@ -1513,7 +1513,7 @@ private Ventanas ventana=new Ventanas();
     }
 ```
 
-#### CU-16 Registrar Empleado
+#### CU-16 Registrar Propietario
 
 ```java
 @FXML
