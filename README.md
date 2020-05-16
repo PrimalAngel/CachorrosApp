@@ -1513,3 +1513,78 @@ private Ventanas ventana=new Ventanas();
     }
 ```
 
+#### CU-16 Registrar Empleado
+
+```java
+@FXML
+    private void guardarEmpleado() throws Exception{
+        Trabajador empleado=new Trabajador();
+        if (Integer.parseInt(edad.getText()) > 18) {
+            String id = idEmp.getText();
+            String nombreEmp = nombre.getText();
+            String cargoEmp = cargo.getSelectionModel().getSelectedItem().toString();
+            String dir = direccion.getText();
+            String age = edad.getText();
+            empleado.setCargo(cargoEmp);
+            empleado.setIdTrabajador(id);
+            empleado.setNomCompleto(nombreEmp);
+            //empleado.setCargo(cargoEmp);
+            empleado.setDireccion(dir);
+            empleado.setEdad(Integer.parseInt(age));
+            if(cargoEmp=="Propietario"){
+                TextInputDialog dialogoTextual=new TextInputDialog();
+                dialogoTextual.setTitle("Confimación de Usuario");
+                dialogoTextual.setHeaderText("Para confirmar el registro del usuario");
+                dialogoTextual.setContentText("Ingrese su Clave");
+                dialogoTextual.initStyle(StageStyle.UTILITY);
+                
+                Optional<String> respuesta=dialogoTextual.showAndWait();
+                boolean resp=false;
+                if(respuesta.isPresent()){
+                    resp=verificarClave(respuesta.get());
+                    System.out.println(resp);
+                    if(resp==true){
+                        System.out.println("Entro a 551");
+                        empleadoControl.create(empleado);
+                        mostrarTablaEmpleados();
+                        Alert boxAlert = new Alert(Alert.AlertType.INFORMATION);
+                        boxAlert.setTitle("Exito");
+                        boxAlert.setHeaderText(null);
+                        boxAlert.initStyle(StageStyle.UTILITY);
+                        boxAlert.setContentText("Se agrego con exito");
+                        Optional<ButtonType> result = boxAlert.showAndWait();
+                    }else{
+                        Alert boxAlert = new Alert(Alert.AlertType.INFORMATION);
+                        boxAlert.setTitle("Contraseña Incorrecta");
+                        boxAlert.setHeaderText(null);
+                        boxAlert.initStyle(StageStyle.UTILITY);
+                        boxAlert.setContentText("ingresa una contraseña correcta");
+                        Optional<ButtonType> result = boxAlert.showAndWait();
+                    }
+                }          
+                
+            }else if(empleado.getCargo()!="Propietario"){
+                System.out.println("Entro a 571");
+                empleadoControl.create(empleado);
+                mostrarTablaEmpleados();
+                Alert boxAlert = new Alert(Alert.AlertType.INFORMATION);
+                boxAlert.setTitle("Exito");
+                boxAlert.setHeaderText(null);
+                boxAlert.initStyle(StageStyle.UTILITY);
+                boxAlert.setContentText("Se agrego con exito");
+                Optional<ButtonType> result = boxAlert.showAndWait();
+            }
+            
+            
+        } else {
+            Alert boxAlert = new Alert(Alert.AlertType.INFORMATION);
+            boxAlert.setTitle("");
+            boxAlert.setHeaderText(null);
+            boxAlert.initStyle(StageStyle.UTILITY);
+            boxAlert.setContentText("No puedes Registrar a menores de edad, debido a la ley federal de trabajo");
+            Optional<ButtonType> result = boxAlert.showAndWait();
+        }
+
+    }
+```
+
