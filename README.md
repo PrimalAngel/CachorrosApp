@@ -2,6 +2,8 @@
 
 # Sistema Punto de Venta Zapatería Cachorros🐶
 
+[TOC]
+
 ## Introducción
 
 ### Descripción del proyecto
@@ -67,21 +69,21 @@ Las principales razones del uso de un ciclo de desarrollo iterativo e incrementa
 
 #### Actividades realizadas en la primera iteración
 
-| Integrante del equipo                            | Alexis Julian Velázquez Nava | Angel Emmanuel Hernandez Gonzalez | Alejandro Jesús Pedraza Viveros | Carlos Daniel Rodríguez Ramírez | Luis Angel Garcia Arellano |
+| Integrante del equipo                            | Alexis Julian Velázquez Nava | Angel Emmanuel Hernandez Gonzalez | Alejandro Jesús Pedraza Viveros | Carlos Daniel Rodríguez Ramírez | Luis ángel Gracia Arellano |
 | ------------------------------------------------ | ---------------------------- | --------------------------------- | ------------------------------- | ------------------------------- | -------------------------- |
 | **Caso de Uso<br />(Diagramas y Funcionalidad)** | 2                            | 1                                 | 6                               | 5                               | 4                          |
 | **Fecha de entrega**                             | 25 Marzo-20 Abril            | 25 Marzo-20 Abril                 | 25 Marzo-20 Abril               | 25 Marzo-20 Abril               | 25 Marzo-20 Abril          |
 
 #### Actividades realizadas en la segunda iteración
 
-| Integrante del equipo                       | Alexis Julian Velázquez Nava | Angel Emmanuel Hernandez Gonzalez | Alejandro Jesús Pedraza Viveros | Carlos Daniel Rodríguez Ramírez | Luis Angel Garcia Arellano |
+| Integrante del equipo                       | Alexis Julian Velázquez Nava | Angel Emmanuel Hernandez Gonzalez | Alejandro Jesús Pedraza Viveros | Carlos Daniel Rodríguez Ramírez | Luis ángel Gracia Arellano |
 | ------------------------------------------- | ---------------------------- | --------------------------------- | ------------------------------- | ------------------------------- | -------------------------- |
 | **Caso de Uso (Diagramas y Funcionalidad)** | 12                           | 7                                 | 15                              | 13                              | 8                          |
 | **Fecha de entrega**                        | 26 Abril- 4 Mayo             | 26 Abril- 4 Mayo                  | 26 Abril- 4 Mayo                | 26 Abril- 4 Mayo                | 26 Abril- 4 Mayo           |
 
 #### Actividades realizadas en la tercera iteración
 
-| Integrante del equipo                       | Alexis Julian Velázquez Nava | Angel Emmanuel Hernandez Gonzalez | Alejandro Jesús Pedraza Viveros | Carlos Daniel Rodríguez Ramírez | Luis Angel Garcia Arellano |
+| Integrante del equipo                       | Alexis Julian Velázquez Nava | Angel Emmanuel Hernandez Gonzalez | Alejandro Jesús Pedraza Viveros | Carlos Daniel Rodríguez Ramírez | Luis ángel Gracia Arellano |
 | ------------------------------------------- | ---------------------------- | --------------------------------- | ------------------------------- | ------------------------------- | -------------------------- |
 | **Caso de Uso (Diagramas y Funcionalidad)** | 14 y 13                      | 9 y 3                             | 16 y 3                          | 10 y 3                          | 11 y 3                     |
 | **Fecha de entrega**                        | 8 Junio - 10 junio           | 8 Junio - 10 junio                | 8 Junio - 10 junio              | 8 Junio - 10 junio              | 8 Junio - 10 junio         |
@@ -96,7 +98,7 @@ El sistema deberá aportar cualidades a los objetos cómo:
 
 Calzado:
 
-- El calzado contará con modelo, marca, color, número/talla, precio, fecha de registro del inventario y se identificará con un código numérico de máximo 5 dígitos.
+- El calzado contará con modelo, marca, color, número/talla, precio, fecha de registro del inventario y se identificará con un código numérico de 5 dígitos.
 
  
 
@@ -702,6 +704,126 @@ Optamos por elegir esta arquitectura, debido a que nos permite tener una separac
     }
 ```
 
+#### CU-3 Generar Ticket
+
+```java
+void imprimirTicket(Calzado calzado, String monto){
+    try {
+        Date date = new Date();
+        String formatoFecha = "dd/MM/yyyy - hh:mm:ss"; // El formato de fecha está especificado
+        SimpleDateFormat sdf = new SimpleDateFormat(formatoFecha); // La cadena de formato de fecha se pasa como un argumento al objeto
+        String fechaSistema = sdf.format(date);
+
+        
+        double pre2 =calzado.getPrecio();
+        double mont=Double.parseDouble(monto);
+        String cambio = String.valueOf(mont-pre2);
+        
+        PrinterMatrix printer = new PrinterMatrix();
+        Extenso e = new Extenso();
+        
+        e.setNumber(8);
+        //Definir el tamanho del papel para la impresion de dinamico y 32 columnas
+        //int filas = jtbl_venta.getRowCount();
+        int tamaño = 22;
+        printer.setOutSize(tamaño, 35);
+       
+        //Imprimir = 1ra linea de la columa de 1 a 32
+        
+        printer.printTextWrap(0, 1, 2, 35,  "========================");
+        printer.printTextWrap(1, 1, 5, 35, "Zapateria Cachorros"); //Nombre establecimiento
+        printer.printTextWrap(2, 1, 5, 35, "Colonia Revolucion"); //Barrio
+        printer.printTextWrap(3, 1, 5, 35, "Av. Atenas Veracruzana"); //Direccion
+        printer.printTextWrap(4, 1, 6, 35, "CP. 91100"); //Codigo Postal
+        printer.printTextWrap(5, 1, 3, 35, fechaSistema); //Aqui va la fecha de recibo
+        //printer.printTextWrap(6, 1, 38,80, "Hora: "+hora); //Aqui va la hora de recibo
+        //printer.printTextWrap(7, 1, 3, 80, "Numero "); //Numero del recibo - FACTURA O PEDIDO
+        //printer.printTextWrap(8, 1, 3, 80, "Atiende"); //Nombre Cajero
+        //printer.printTextWrap(9, 1, 3, 80, "Cliente");//Nombre del Cliente
+        printer.printTextWrap(6,1, 2, 35,   "=========================");
+        //printer.printTextWrap(9,1, 7, 80, "ID   DESCRIPCION                        CANT           PRECIO");
+        
+        //for (int i = 0; i < filas; i++) {
+          //  int p = 13+i; //Fila
+
+            printer.printTextWrap(7 , 1, 4, 35 , "Marca:   "+calzado.getMarca());
+            printer.printTextWrap(8 , 1, 4, 35 , "Modelo:  "+calzado.getModelo());
+            printer.printTextWrap(9, 1, 4, 35 , "Talla:   "+calzado.getNumero());
+            printer.printTextWrap(10 , 1, 4, 35 , "Color:   "+calzado.getColor());
+
+            //String pre= printer.alinharADireita(10, String.valueOf(calzado.getPrecio()));
+            //printer.printTextWrap(14 , 1, 30, 80, pre);
+
+            //String inp= printer.alinharADireita(7,punto_Venta.jtbl_venta.getValueAt(i,6).toString());
+            //printer.printTextWrap(p , 1, 25, 32, inp);
+        //}
+        DecimalFormat formateador = new DecimalFormat("#.###");
+
+        /*String sub= printer.alinharADireita(10, subTotal);
+        printer.printTextWrap(17, 1, 5, 80, "Subtotal: ");
+        printer.printTextWrap(17, 1, 20, 80, "$"+sub);*/
+
+        String tot= printer.alinharADireita(10, String.valueOf(calzado.getPrecio()));
+        printer.printTextWrap(11, 1, 5, 35, "Total a pagar: ");
+        printer.printTextWrap(11, 1, 20, 35, "$"+tot);
+
+        String efe= printer.alinharADireita(10,monto);
+        printer.printTextWrap(12, 1, 5, 35, "Efectivo : ");
+        printer.printTextWrap(12, 1, 20, 35, "$"+efe);
+
+        String cam= printer.alinharADireita(10,cambio);
+        printer.printTextWrap(13, 1, 5, 35, "Cambio : ");
+        printer.printTextWrap(13, 1, 20, 35, "$"+ cam);
+
+        printer.printTextWrap(14, 1, 5, 35, "=========================");
+        printer.printTextWrap(15, 1, 3, 35, "!Gracias por su preferencia!");
+        printer.printTextWrap(16, 1, 3, 35, "***Revice su Mercancia***");
+        printer.printTextWrap(17, 1, 1, 35, "<No Hay Cambios Ni Devoluciones");
+        printer.printTextWrap(18, 1, 2, 35, "Despues de Ocho Dias");
+        printer.printTextWrap(19, 1, 2, 35, "Y En Ofertas>");
+        printer.printTextWrap(20, 1, 1, 35, "cachorroszapateria@gmail.com");
+        printer.printTextWrap(21, 1, 2, 35, "==========================");
+        
+
+        ///CREAR ARCHIVO EN CARPETA DEL PROYECTO PARA PEDIDOS
+        printer.toFile("impresion.txt");
+        FileInputStream inputStream = null;
+
+        try {
+            inputStream = new FileInputStream("impresion.txt");
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al guardar");
+        }
+        if (inputStream == null) {
+            return;
+        }
+
+        DocFlavor docFormat = DocFlavor.INPUT_STREAM.AUTOSENSE;
+        Doc document = new SimpleDoc(inputStream, docFormat, null);
+        PrintRequestAttributeSet attributeSet = new HashPrintRequestAttributeSet();
+        PrintService defaultPrintService = PrintServiceLookup.lookupDefaultPrintService();
+
+        if (defaultPrintService != null) {
+            DocPrintJob printJob = defaultPrintService.createPrintJob();
+            try {
+                printJob.print(document, attributeSet);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            System.err.println("No existen impresoras instaladas");
+        }
+
+        inputStream.close();
+        //imprimirFin(subTotal, total, dineroR, devolucion); //ESTE METODO NO SE UTILIZARA
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al imprimir "+e);
+        }
+    }
+```
+
 #### CU-4 Registrar Entrada
 
 ```java
@@ -908,6 +1030,222 @@ Optamos por elegir esta arquitectura, debido a que nos permite tener una separac
     }
 ```
 
+#### CU-9 Visualizar Inventario
+
+```java
+public void mostrarTabla(){
+        listCalzado = FXCollections.observableArrayList(calzadoControl.findCalzadoEntities());
+        System.out.println(listCalzado.get(1).getFechaRegInv());
+        tlbInv.setItems(listCalzado);
+
+        clmnCategoria.setCellValueFactory(new PropertyValueFactory<Calzado, String>("Categoria"));
+        clmnMarca.setCellValueFactory(new PropertyValueFactory<Calzado, String>("Marca"));
+        clmnModelo.setCellValueFactory(new PropertyValueFactory<Calzado, String>("Modelo"));
+        clmnNumero.setCellValueFactory(new PropertyValueFactory<Calzado, Number>("Numero"));
+        clmnColor.setCellValueFactory(new PropertyValueFactory<Calzado, String>("Color"));
+        clmnPrecio.setCellValueFactory(new PropertyValueFactory<Calzado, Number>("Precio"));
+        clmnFecha.setCellValueFactory(new PropertyValueFactory<Calzado, String>("FechaRegInv"));
+        clmnStatus.setCellValueFactory(new PropertyValueFactory<Calzado, String>("status"));
+    }
+```
+
+#### CU-10 Visualizar Ventas Del Dia
+
+```java
+@FXML
+    public void mostrarTablaVentas() { 
+        Calendar c2 = new GregorianCalendar();
+        int dia = c2.get(Calendar.DATE);
+        int mes = c2.get(Calendar.MONTH);
+        int annio = c2.get(Calendar.YEAR);
+        mes++;
+        String Dia="";
+        if(dia<10){
+            Dia="0"+dia;
+        }else{
+            Dia=String.valueOf(dia);
+        }
+        String Mes="";
+        if(mes<10){
+            Mes="0"+mes;
+        }else{
+            Mes=String.valueOf(mes);
+        }
+                
+        String fecha=annio+"-"+Mes+"-"+Dia;
+        
+        String respuesta=cbOpciones.getSelectionModel().getSelectedItem().toString();
+        if(respuesta=="Hoy"){
+            listVenta = FXCollections.observableArrayList(controlVenta.findVentaByFecha(fecha));
+            for(int i=0;i<listVenta.size();i++){
+                calzadotb=new CalzadoTB();
+                calzadotb.setCodigo(listVenta.get(i).getCodigo().getCodigo());
+                calzadotb.setMarca(listVenta.get(i).getCodigo().getMarca());
+                calzadotb.setModelo(listVenta.get(i).getCodigo().getModelo());
+                calzadotb.setNumero(listVenta.get(i).getCodigo().getNumero());
+                calzadotb.setColor(listVenta.get(i).getCodigo().getColor());
+                calzadotb.setPrecio(listVenta.get(i).getCodigo().getPrecio());
+                calzadotb.setFechaRegInv(listVenta.get(i).getCodigo().getFechaRegInv());
+                calzadotb.setFechaVenta(listVenta.get(i).getFechaVenta());
+                calzadotb.setCategoria(listVenta.get(i).getCodigo().getCategoria());
+                
+                listFinal.add(calzadotb);
+            }
+            
+        }else if(respuesta=="Última Semana"){
+            String fecha2=obtenerFecha(7);
+            listVenta = FXCollections.observableArrayList(controlVenta.findByBetwen(fecha2, fecha));
+            System.out.println("Tamaño listVenta = "+listVenta.size());
+            System.out.println("Contenido de la misma= "+listVenta.get(0).getFechaVenta());
+            for(int i=0;i<listVenta.size();i++){
+                calzadotb=new CalzadoTB();
+                calzadotb.setCodigo(listVenta.get(i).getCodigo().getCodigo());
+                calzadotb.setMarca(listVenta.get(i).getCodigo().getMarca());
+                calzadotb.setModelo(listVenta.get(i).getCodigo().getModelo());
+                calzadotb.setNumero(listVenta.get(i).getCodigo().getNumero());
+                calzadotb.setColor(listVenta.get(i).getCodigo().getColor());
+                calzadotb.setPrecio(listVenta.get(i).getCodigo().getPrecio());
+                calzadotb.setFechaRegInv(listVenta.get(i).getCodigo().getFechaRegInv());
+                calzadotb.setFechaVenta(listVenta.get(i).getFechaVenta());
+                calzadotb.setCategoria(listVenta.get(i).getCodigo().getCategoria());
+                
+                listFinal.add(calzadotb);
+            }
+        }else if(respuesta=="Último Mes"){
+            String fecha2=obtenerFecha(30);
+            listVenta = FXCollections.observableArrayList(controlVenta.findByBetwen(fecha2, fecha));
+            for(int i=0;i<listVenta.size();i++){
+                calzadotb=new CalzadoTB();
+                calzadotb.setCodigo(listVenta.get(i).getCodigo().getCodigo());
+                calzadotb.setMarca(listVenta.get(i).getCodigo().getMarca());
+                calzadotb.setModelo(listVenta.get(i).getCodigo().getModelo());
+                calzadotb.setNumero(listVenta.get(i).getCodigo().getNumero());
+                calzadotb.setColor(listVenta.get(i).getCodigo().getColor());
+                calzadotb.setPrecio(listVenta.get(i).getCodigo().getPrecio());
+                calzadotb.setFechaRegInv(listVenta.get(i).getCodigo().getFechaRegInv());
+                calzadotb.setFechaVenta(listVenta.get(i).getFechaVenta());
+                calzadotb.setCategoria(listVenta.get(i).getCodigo().getCategoria());
+                
+                listFinal.add(calzadotb);
+            }
+        }else if(respuesta=="Desde Siempre"){
+            listVenta = FXCollections.observableArrayList(controlVenta.findVentaEntities());
+            System.out.println("Tamaño listVenta = "+listVenta);
+            for(int i=0;i<listVenta.size();i++){
+                calzadotb=new CalzadoTB();
+                calzadotb.setCodigo(listVenta.get(i).getCodigo().getCodigo());
+                calzadotb.setMarca(listVenta.get(i).getCodigo().getMarca());
+                calzadotb.setModelo(listVenta.get(i).getCodigo().getModelo());
+                calzadotb.setNumero(listVenta.get(i).getCodigo().getNumero());
+                calzadotb.setColor(listVenta.get(i).getCodigo().getColor());
+                calzadotb.setPrecio(listVenta.get(i).getCodigo().getPrecio());
+                calzadotb.setFechaRegInv(listVenta.get(i).getCodigo().getFechaRegInv());
+                calzadotb.setFechaVenta(listVenta.get(i).getFechaVenta());
+                calzadotb.setCategoria(listVenta.get(i).getCodigo().getCategoria());
+                
+                listFinal.add(calzadotb);
+            }
+        }else{
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            dtFechaVenta.setConverter(new LocalDateStringConverter(formatter, null));
+            
+            String fechaVenta=dtFechaVenta.getEditor().getText();
+            System.out.println(fechaVenta);
+            listVenta = FXCollections.observableArrayList(controlVenta.findVentaByFecha(fechaVenta));
+            for(int i=0;i<listVenta.size();i++){
+                calzadotb=new CalzadoTB();
+                calzadotb.setCodigo(listVenta.get(i).getCodigo().getCodigo());
+                calzadotb.setMarca(listVenta.get(i).getCodigo().getMarca());
+                calzadotb.setModelo(listVenta.get(i).getCodigo().getModelo());
+                calzadotb.setNumero(listVenta.get(i).getCodigo().getNumero());
+                calzadotb.setColor(listVenta.get(i).getCodigo().getColor());
+                calzadotb.setPrecio(listVenta.get(i).getCodigo().getPrecio());
+                calzadotb.setFechaRegInv(listVenta.get(i).getCodigo().getFechaRegInv());
+                calzadotb.setFechaVenta(listVenta.get(i).getFechaVenta());
+                calzadotb.setCategoria(listVenta.get(i).getCodigo().getCategoria());
+                
+                listFinal.add(calzadotb);
+            }
+        }
+        
+        listCalzadoVenta=FXCollections.observableArrayList(listFinal);
+        listFinal.clear();
+        listVenta.clear();
+        tlbVenta.setItems(listCalzadoVenta);
+
+        clmnMarcaVenta.setCellValueFactory(new PropertyValueFactory<CalzadoTB, String>("marca"));
+        clmnEstiloVenta.setCellValueFactory(new PropertyValueFactory<CalzadoTB, String>("modelo"));
+        clmnTallaVenta.setCellValueFactory(new PropertyValueFactory<CalzadoTB, String>("numero"));
+        clmnColorVenta.setCellValueFactory(new PropertyValueFactory<CalzadoTB, String>("color"));
+        clmnPrecioVenta.setCellValueFactory(new PropertyValueFactory<CalzadoTB, String>("precio"));
+        clmnFechaVenta.setCellValueFactory(new PropertyValueFactory<CalzadoTB, String>("fechaVenta"));
+    }
+```
+
+#### CU-11 Realizar Corte De Caja
+
+```java
+public void hacerCorte(){
+        float fondoCaja=0;
+        if(txtFondoDeCaja.getText().equals("")){
+            fondoCaja=0;
+        }else{
+            fondoCaja=Float.valueOf(txtFondoDeCaja.getText());
+        }
+        float gastos=0;
+        float totalEnCaja;
+        if(text.size()==0){
+            totalEnCaja=totalVenta-gastos;
+            ptCorte.imprimirCorte(fondoCaja, totalVenta, gastos, totalEnCaja, listGastos);
+            Alert boxAlert=new Alert(Alert.AlertType.CONFIRMATION);
+            boxAlert.setTitle("Corte de Caja Realizado");
+            boxAlert.setHeaderText(null);
+            boxAlert.initStyle(StageStyle.UTILITY);
+            boxAlert.setContentText("Fondo de Caja= "+fondoCaja+"\n"+"Ventas Totales= "+totalVenta+"\n"+"Total de Gastos= "+gastos+"\n"+"Total en Caja= "+totalEnCaja);
+            Optional<ButtonType> result= boxAlert.showAndWait();
+        }else{
+            System.out.println("Hola "+text.size());
+            boolean sigue=false;
+            for(int i=0;i<text.size();i++){
+                if(text.get(i).getText().equals("") || contexto.get(i).getText().equals("")){
+                    Alert boxAlert=new Alert(Alert.AlertType.INFORMATION);
+                    boxAlert.setTitle("Completa todos los campos");
+                    boxAlert.setHeaderText(null);
+                    boxAlert.initStyle(StageStyle.UTILITY);
+                    boxAlert.setContentText("Por favor no dejes ningun campo de gasto vacio.\n"
+                            + "si no es necesario ese campo eliminalo");
+                    boxAlert.showAndWait();
+                    sigue=false;
+                    break;
+                }else{
+                    objGastos=new Gastos(contexto.get(i).getText(), Float.valueOf(text.get(i).getText()));
+                    listGastos.add(objGastos);
+                    gastos=gastos+Float.valueOf(text.get(i).getText());
+                    sigue=true;
+                }
+                
+            }
+            
+            if(sigue==true){
+                totalEnCaja=totalVenta-gastos;
+                ptCorte.imprimirCorte(fondoCaja, totalVenta, gastos, totalEnCaja, listGastos);
+                listGastos.clear();
+                Alert boxAlert=new Alert(Alert.AlertType.CONFIRMATION);
+                boxAlert.setTitle("Corte de Caja Realizado");
+                boxAlert.setHeaderText(null);
+                boxAlert.initStyle(StageStyle.UTILITY);
+                boxAlert.setContentText("Fondo de Caja= "+fondoCaja+"\n"+"Ventas Totales= "+totalVenta+"\n"+"Total de Gastos= "+gastos+"\n"+"Total en Caja= "+totalEnCaja);
+                Optional<ButtonType> result= boxAlert.showAndWait();
+                if(result.get()==ButtonType.OK){
+                    ventana.inicio();
+                }
+            }
+        }  
+    }
+```
+
+
+
 #### CU-12 Registrar Empleado
 
 ```java
@@ -965,6 +1303,21 @@ Trabajador empleado=new Trabajador();
             mostrarTablaEmpleados();
             cancelar();
         }
+    }
+```
+
+#### CU-14 Visualizar Lista Empleados
+
+```java
+public void mostrarTablaEmpleados() {
+        listEmpleado = FXCollections.observableArrayList(empleadoControl.findEmpleado());
+        tlbEmpleado.setItems(listEmpleado);
+
+        clmnId.setCellValueFactory(new PropertyValueFactory<Calzado, String>("idTrabajador"));
+        clmnNombre.setCellValueFactory(new PropertyValueFactory<Calzado, String>("nomCompleto"));
+        clmnCargo.setCellValueFactory(new PropertyValueFactory<Calzado, String>("cargo"));
+        clmnDireccion.setCellValueFactory(new PropertyValueFactory<Calzado, String>("direccion"));
+        clmnEdad.setCellValueFactory(new PropertyValueFactory<Calzado, Number>("edad"));
     }
 ```
 
