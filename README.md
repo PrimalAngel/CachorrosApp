@@ -824,6 +824,179 @@ void imprimirTicket(Calzado calzado, String monto){
     }
 ```
 
+#### CU-3 Ticket Correo
+
+```java
+public void crearTicketPdf() throws FileNotFoundException, DocumentException, BadElementException, IOException{
+
+        //Recupero los datos de los TextField...
+        String marca = txtMarca.getText();
+        String modelo = txtModelo.getText();
+        String talla = txtTalla.getText();
+        String color = calzado.getColor();
+        String precio = txtPrecio.getText();
+        String monto = txtMonto.getText();
+        monto=monto+".00";
+        String prec=precio.substring(1);
+        double pre =Double.parseDouble(prec);
+        double mont=Double.parseDouble(monto);
+        String cambio = String.valueOf(mont-pre);
+
+        //Esto es para generar el formato de la fecha y hora...
+        Date date = new Date();
+        String formatoFecha = "dd/MM/yyyy - hh:mm:ss"; // El formato de fecha está especificado
+        SimpleDateFormat sdf = new SimpleDateFormat(formatoFecha); // La cadena de formato de fecha se pasa como un argumento al objeto
+        String fechaSistema = sdf.format(date);
+
+        //Creo una variable de tipo Document...
+        Document doc = new Document();
+        //Asigno donde se guardaran los datos...
+        FileOutputStream ficheroPdf = new FileOutputStream("Ticket.pdf");
+        //Creamos el pdf...
+        PdfWriter.getInstance(doc, ficheroPdf);
+        //Abrimos el pdf...
+        doc.open();
+
+        //Agregar fecha de compra...
+        Paragraph fechaCompra = new Paragraph("Xalapa, Ver a " + fechaSistema, FontFactory.getFont("comic sans", 15, Font.ITALIC, BaseColor.BLACK));
+        fechaCompra.setAlignment(Element.ALIGN_RIGHT);
+
+        //Agregamos el logo de la empresa...
+        Image imagen = Image.getInstance("logoPV.png");
+        imagen.setAlignment(Element.ALIGN_CENTER);
+        imagen.scalePercent(25f);
+
+        //Creamos las variables de los datos de la compra...
+        Paragraph marcaZap = new Paragraph("\nMARCA:        " + marca, FontFactory.getFont("comic sans", 19, Font.BOLD, BaseColor.BLACK));
+        marcaZap.setIndentationLeft(160);
+        marcaZap.setAlignment(Element.ALIGN_MIDDLE);
+
+        Paragraph modeloZap = new Paragraph("MODELO:      " + modelo, FontFactory.getFont("comic sans", 19, Font.BOLD, BaseColor.BLACK));
+        modeloZap.setIndentationLeft(160);
+        modeloZap.setAlignment(Element.ALIGN_MIDDLE);
+
+        Paragraph tallaZap = new Paragraph("TALLA:          " + talla, FontFactory.getFont("comic sans", 19, Font.BOLD, BaseColor.BLACK));
+        tallaZap.setIndentationLeft(160);
+        tallaZap.setAlignment(Element.ALIGN_MIDDLE);
+
+        Paragraph colorZap = new Paragraph("COLOR:         " + color, FontFactory.getFont("comic sans", 19, Font.BOLD, BaseColor.BLACK));
+        colorZap.setIndentationLeft(160);
+        colorZap.setAlignment(Element.ALIGN_MIDDLE);
+
+        Paragraph precioZap = new Paragraph("PRECIO:        " + precio, FontFactory.getFont("comic sans", 19, Font.BOLD, BaseColor.BLACK));
+        precioZap.setIndentationLeft(160);
+        precioZap.setAlignment(Element.ALIGN_MIDDLE);
+
+        Paragraph efectivoZap = new Paragraph("EFECTIVO:    $" + monto, FontFactory.getFont("comic sans", 19, Font.BOLD, BaseColor.BLACK));
+        efectivoZap.setIndentationLeft(160);
+        efectivoZap.setAlignment(Element.ALIGN_MIDDLE);
+
+        Paragraph cambioZap = new Paragraph("CAMBIO:       $" + cambio, FontFactory.getFont("comic sans", 19, Font.BOLD, BaseColor.BLACK));
+        cambioZap.setIndentationLeft(160);
+        cambioZap.setAlignment(Element.ALIGN_MIDDLE);
+
+        //Creamos las variables de los datos de la empresa...
+        Paragraph direccion = new Paragraph("\n\nDirección: AV. Atenas Veracruzana S/N", FontFactory.getFont("comic sans", 15, Font.BOLD, BaseColor.BLACK));
+        direccion.setAlignment(Element.ALIGN_LEFT);
+
+        Paragraph colonia = new Paragraph("Colonia: Revolución", FontFactory.getFont("comic sans", 15, Font.BOLD, BaseColor.BLACK));
+        colonia.setAlignment(Element.ALIGN_LEFT);
+
+        Paragraph codPostal = new Paragraph("Código Postal: 91100", FontFactory.getFont("comic sans", 15, Font.BOLD, BaseColor.BLACK));
+        codPostal.setAlignment(Element.ALIGN_LEFT);
+
+        Paragraph telefono = new Paragraph("Teléfono: 8152305", FontFactory.getFont("comic sans", 15, Font.BOLD, BaseColor.BLACK));
+        telefono.setAlignment(Element.ALIGN_LEFT);
+
+        Paragraph correo = new Paragraph("Correo: cachorroszapateria@gmail.com\n\n\n", FontFactory.getFont("comic sans", 15, Font.BOLD, BaseColor.BLACK));
+        correo.setAlignment(Element.ALIGN_LEFT);
+
+        //Creamos la frase rev...
+        Paragraph revise = new Paragraph("******** REVISE SU MERCANCÍA ********", FontFactory.getFont("comic sans", 10, Font.ITALIC, BaseColor.BLACK));
+        revise.setAlignment(Element.ALIGN_CENTER);
+
+        //Creamos la frase dev...
+        Paragraph devolucion = new Paragraph("***No Hay Cambios Ni Devoluciones Después De Ocho Días Y En Ofertas***", FontFactory.getFont("comic sans", 10, Font.ITALIC, BaseColor.BLACK));
+        devolucion.setAlignment(Element.ALIGN_CENTER);
+
+        //Creamos la frase thanks...
+        Paragraph gracias = new Paragraph("\n\n¡ GRACIAS POR SU COMPRA !", FontFactory.getFont("comic sans", 15, Font.BOLDITALIC, BaseColor.BLACK));
+        gracias.setAlignment(Element.ALIGN_CENTER);
+
+        //Agregamos los elementos al pdf...
+        doc.add(fechaCompra);
+        doc.add(imagen);
+        doc.add(marcaZap);
+        doc.add(modeloZap);
+        doc.add(tallaZap);
+        doc.add(colorZap);
+        doc.add(precioZap);
+        doc.add(efectivoZap);
+        doc.add(cambioZap);
+        doc.add(direccion);
+        doc.add(colonia);
+        doc.add(codPostal);
+        doc.add(telefono);
+        doc.add(correo);
+        doc.add(revise);
+        doc.add(devolucion);
+        doc.add(gracias);
+
+        //Cerramos el pdf...
+        doc.close();
+    }
+
+    public void enviarCorreo(){
+
+          try {
+              //Establecemos las propiedades de conexion...
+              Properties props = new Properties();
+              props.put("mail.smtp.host", "smtp.gmail.com");  //Hosting o dominio desde donde enviamos los correos...
+              props.setProperty("mail.smtp.starttls.enable", "true");    //Si vamos a utilizar tls
+              props.setProperty("mail.smtp.port", "587"); //Puerto...
+              props.setProperty("mail.smtp.user", "");
+              props.setProperty("mail.smtp.auth", "true");    //Indicar si se va autentificar directamente a gmail...
+
+              Session sesion = Session.getDefaultInstance(props);
+
+              String correoRem = "cachorroszapateria@gmail.com";
+              String passwordRem = "TeamCachorros";
+              String correoDes = txtCorreo.getText();
+              String asunto = "¡ Envío De Su Ticket !";
+              String mensajeCorreo = "¡ Muchas Gracias Por Su Compra, Vuelva Pronto !";
+
+              BodyPart texto = new MimeBodyPart();
+              texto.setText(mensajeCorreo);
+
+              BodyPart adjunto = new MimeBodyPart();
+              adjunto.setDataHandler(new DataHandler(new FileDataSource("Ticket.pdf")));
+              adjunto.setFileName("Ticket.pdf");
+
+              MimeMultipart multiparte = new MimeMultipart();
+              multiparte.addBodyPart(texto);
+              multiparte.addBodyPart(adjunto);
+
+              MimeMessage mensaje = new MimeMessage(sesion);
+              mensaje.setFrom(new InternetAddress(correoRem));    //Correo del cual enviamos...
+              mensaje.addRecipient(Message.RecipientType.TO, new InternetAddress(correoDes)); //Opcion para el destinatario principal...
+              mensaje.setSubject(asunto);
+              mensaje.setContent(multiparte);
+
+              Transport t = sesion.getTransport("smtp");
+              t.connect(correoRem, passwordRem);
+              t.sendMessage(mensaje, mensaje.getRecipients(Message.RecipientType.TO));
+              t.close();
+
+          } catch (AddressException ex) {
+              Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+          } catch (MessagingException ex) {
+              Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+          }
+      }
+```
+
+
+
 #### CU-4 Registrar Entrada
 
 ```java
